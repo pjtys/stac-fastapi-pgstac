@@ -56,6 +56,8 @@ class PostgresSettings(BaseSettings):
         postgres_pass: postgres password.
         postgres_host_reader: hostname for the reader connection.
         postgres_host_writer: hostname for the writer connection.
+        postgres_port_reader: database port for the reader connection.
+        postgres_port_writer: database port for the writer connection.
         postgres_port: database port.
         postgres_dbname: database name.
         use_api_hydrate: perform hydration of stac items within stac-fastapi.
@@ -68,7 +70,7 @@ class PostgresSettings(BaseSettings):
     postgres_host_writer: str
     postgres_port_reader: int
     postgres_port_writer: int
-    postgres_port: int
+    postgres_port: int = 5432
     postgres_dbname: str
 
     db_min_conn_size: int = 1
