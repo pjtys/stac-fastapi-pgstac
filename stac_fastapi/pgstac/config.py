@@ -66,6 +66,8 @@ class PostgresSettings(BaseSettings):
     postgres_pass: str
     postgres_host_reader: str
     postgres_host_writer: str
+    postgres_port_reader: int
+    postgres_port_writer: int
     postgres_port: int
     postgres_dbname: str
 
@@ -81,12 +83,12 @@ class PostgresSettings(BaseSettings):
     @property
     def reader_connection_string(self):
         """Create reader psql connection string."""
-        return f"postgresql://{self.postgres_user}:{quote(self.postgres_pass)}@{self.postgres_host_reader}:{self.postgres_port}/{self.postgres_dbname}"
+        return f"postgresql://{self.postgres_user}:{quote(self.postgres_pass)}@{self.postgres_host_reader}:{self.postgres_port_reader}/{self.postgres_dbname}"
 
     @property
     def writer_connection_string(self):
         """Create writer psql connection string."""
-        return f"postgresql://{self.postgres_user}:{quote(self.postgres_pass)}@{self.postgres_host_writer}:{self.postgres_port}/{self.postgres_dbname}"
+        return f"postgresql://{self.postgres_user}:{quote(self.postgres_pass)}@{self.postgres_host_writer}:{self.postgres_port_reader}/{self.postgres_dbname}"
 
     @property
     def testing_connection_string(self):
